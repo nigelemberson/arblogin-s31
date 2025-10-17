@@ -1,0 +1,6 @@
+/* t2_desktop_colors.css — S12: exact solids, no pulse */
+.t2-pos  { background-color: #2EE66B !important; }
+.t2-warn { background-color: #F5C542 !important; }
+.t2-neg  { background-color: #DE3E4B !important; }
+.t2-selected{ outline:2px solid #1a7a3b; outline-offset:-2px; }
+.t2-pulse{ animation: none !important; }

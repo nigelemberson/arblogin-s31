@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base href="/static/landing_v2/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Big Cheese — Login (Stable v2)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stage" id="stage">
+    <img src="assets/welcome.webp" alt="Welcome" class="bg" id="bg">
+    <!-- Clickable overlay inside the stage -->
+    <a id="loginHotspot" class="hotspot show" href="/login" aria-label="Login">
+      <span class="tag">Login Hotspot</span>
+    </a>
+  </div>
+
+  <!-- Controls -->
+  <nav class="control-row">
+    <button id="saveBtn"  class="chip chip-blue">Save</button>
+    <button id="resetBtn" class="chip chip-orange">Reset</button>
+    <button id="hideBtn"  class="chip chip-gray">Hide Outline</button>
+    <div class="nudge">
+      <button class="mini" data-move="-5,0">◀</button>
+      <button class="mini" data-move="5,0">▶</button>
+      <button class="mini" data-move="0,-5">▲</button>
+      <button class="mini" data-move="0,5">▼</button>
+      <button class="mini" data-size="5,0">W+</button>
+      <button class="mini" data-size="-5,0">W-</button>
+      <button class="mini" data-size="0,5">H+</button>
+      <button class="mini" data-size="0,-5">H-</button>
+    </div>
+  </nav>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" hidden>Saved</div>
+
+  <script>
+  (function(){
+    const stage = document.getElementById('stage');
+    const spot  = document.getElementById('loginHotspot');
+    const saveBtn  = document.getElementById('saveBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const hideBtn  = document.getElementById('hideBtn');
+    const toastEl  = document.getElementById('toast');
+    const STORAGE_KEY = 'bigcheese_hotspot_pct';
+
+    // Default % values
+    let cfg = { left:48, top:52, width:46, height:10, radius:40 };
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if(saved){ cfg = Object.assign(cfg, JSON.parse(saved)); }
+    } catch(e){ console.warn('Storage read failed', e); }
+
+    function apply(){
+      spot.style.left   = cfg.left + '%';
+      spot.style.top    = cfg.top + '%';
+      spot.style.width  = cfg.width + '%';
+      spot.style.height = cfg.height + '%';
+      spot.style.borderRadius = cfg.radius + 'px';
+    }
+    apply();
+
+    function showToast(msg){
+      toastEl.textContent = msg;
+      toastEl.hidden = false;
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=>{ toastEl.hidden = true; }, 1400);
+    }
+
+    function save(){
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cfg)); showToast('Saved'); }
+      catch(e){ console.warn('Storage write failed', e); showToast('Save failed'); }
+    }
+
+    // Nudge
+    document.querySelectorAll('.mini').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const r = stage.getBoundingClientRect();
+        if(btn.dataset.move){
+          const [dx,dy] = btn.dataset.move.split(',').map(Number);
+          cfg.left += dx / (r.width/100);
+          cfg.top  += dy / (r.height/100);
+        }
+        if(btn.dataset.size){
+          const [dw,dh] = btn.dataset.size.split(',').map(Number);
+          cfg.width  += dw / (r.width/100);
+          cfg.height += dh / (r.height/100);
+        }
+        apply(); save();
+      });
+    });
+
+    // Drag
+    let dragging=false, sx=0, sy=0, sl=0, st=0;
+    spot.addEventListener('mousedown', (e)=>{
+      dragging=true; sx=e.clientX; sy=e.clientY; sl=cfg.left; st=cfg.top; e.preventDefault();
+    });
+    window.addEventListener('mousemove', (e)=>{
+      if(!dragging) return;
+      const r = stage.getBoundingClientRect();
+      const dx = (e.clientX - sx) / r.width * 100;
+      const dy = (e.clientY - sy) / r.height * 100;
+      cfg.left = sl + dx; cfg.top = st + dy;
+      apply();
+    });
+    window.addEventListener('mouseup', ()=>{ if(dragging){ dragging=false; save(); } });
+
+    // Buttons
+    saveBtn.addEventListener('click', save);
+    resetBtn.addEventListener('click', ()=>{
+      cfg = { left:48, top:52, width:46, height:10, radius:40 };
+      apply(); save(); showToast('Reset');
+    });
+    hideBtn.addEventListener('click', ()=>{
+      const isHidden = spot.classList.toggle('outline-hidden');
+      hideBtn.textContent = isHidden ? 'Show Outline' : 'Hide Outline';
+      showToast(isHidden ? 'Outline hidden' : 'Outline shown');
+    });
+
+    window.addEventListener('resize', apply);
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+S6 – Full web wiring (no visual changes)
+Date: 2025-10-13 02:08 PHST
+
+- Preserved landing.html and _bg_s14.html intact (FROZEN).
+- Added routes: /login, /tutorial[/<page>], /trial, /subscribe, /payment, /dashboard, /logout.
+- Created minimal templates for missing pages that include your background partial when present.
+- Added /__routes diagnostic.
+- Added Procfile + runtime.txt for Scalingo; left requirements.txt as-is (or added Flask/Gunicorn if missing).

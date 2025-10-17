@@ -1,0 +1,3 @@
+Series: ARBITRAGE220925
+Release: C
+Base: A24e

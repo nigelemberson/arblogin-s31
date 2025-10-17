@@ -1,0 +1,49 @@
+:root{
+  --bg:#0b0f14; --panel:#11161d; --text:#e7edf3; --muted:#a9b5c1;
+  --accent:#10b981; --danger:#ef4444; --warning:#f59e0b; --good:#22c55e;
+  --chip:#0f172a; --chip-ring:#334155; --table-row:#0f1420; --table-row-alt:#121a28;
+  --table-border:#1f2937; --link:#93c5fd;
+}
+html,body{
+  background:var(--bg);
+  color:var(--text);
+  font: 15px/1.45 "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  margin:0;
+}
+header.topbar, .brand, h1, h2{ color:var(--text) }
+.brand{ font-weight:700; letter-spacing:.2px }
+.step, .pill, .chip, .chip-ghost{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.35rem .6rem; border-radius:999px;
+  background:var(--chip); border:1px solid var(--chip-ring);
+  color:var(--text);
+}
+a{ color:var(--link); text-decoration:none }
+a:hover{ text-decoration:underline }
+table{ width:100%; border-collapse:separate; border-spacing:0 }
+thead th{
+  position:sticky; top:0; z-index:3; background:var(--panel); color:var(--muted);
+  text-align:left; font-weight:600; letter-spacing:.02em;
+  border-bottom:1px solid var(--table-border); padding:.55rem .6rem
+}
+tbody td{ padding:.5rem .6rem; border-bottom:1px solid var(--table-border) }
+tbody tr:nth-child(odd){ background:var(--table-row) }
+tbody tr:nth-child(even){ background:var(--table-row-alt) }
+tbody tr:hover{ filter:brightness(1.08) }
+td.num, th.num{ text-align:right; font-variant-numeric: tabular-nums }
+@keyframes pulseGood{ 0%,100%{ box-shadow:inset 0 0 0 0 rgba(34,197,94,0)} 50%{ box-shadow:inset 0 0 0 100vmax rgba(34,197,94,.08)} }
+@keyframes pulseWarn{ 0%,100%{ box-shadow:inset 0 0 0 0 rgba(245,158,11,0)} 50%{ box-shadow:inset 0 0 0 100vmax rgba(245,158,11,.10)} }
+tr.pos, .pos{ animation:pulseGood 1.2s infinite }
+tr.warn, .warn{ animation:pulseWarn 1.2s infinite }
+.card{
+  background:var(--panel); border:1px solid var(--table-border); border-radius:.75rem; padding:1rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25)
+}
+input, select, button{
+  background:#0b1320; color:var(--text); border:1px solid #223047; border-radius:.5rem; padding:.4rem .55rem; outline:none
+}
+input:focus, select:focus, button:focus{ border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,.25) }
+button{ cursor:pointer }
+button.primary{ background:#14532d; border-color:#166534 }
+button.primary:hover{ filter:brightness(1.15) }
+.badge{ font-size:.75rem; padding:.1rem .4rem; border-radius:.35rem; background:#1f2937; color:#a8b3bf }

@@ -1,0 +1,10 @@
+/* Interaction reinforcement for login */
+.wrap, .panel, .form, .field, .field input, .actions, .btn {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+}
+/* Improve input focus visibility */
+.field input:focus {
+  outline: 2px solid #ffffff55;
+}

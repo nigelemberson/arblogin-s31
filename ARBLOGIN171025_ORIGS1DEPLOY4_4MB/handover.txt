@@ -1,0 +1,13 @@
+HANDOVER — ARBLOGIN151025B_S17 (carry-over from S16)
+
+What changed in this package:
+• Removed development clutter: __pycache__/, .DS_Store, .idea/, .vscode/, node_modules/ (if any), logs, tmp files
+• Losslessly/visually-safely re-compressed PNG/JPEG/WEBP assets (kept same filenames)
+• Preserved structure with a truly flat ZIP root (no wrapper folder)
+• This build aims to be ~5 MB smaller while keeping routes, templates, and static paths intact
+
+Notes:
+• If you need to roll back a specific asset, tell me its path and I’ll restore it.
+• All filenames are unchanged; only bytes were optimized.
+
+This FLAT build hoists files from the inner S15 folder to the ZIP root (no wrapper folder).

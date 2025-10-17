@@ -1,0 +1,56 @@
+[
+  {
+    "full_name": "e",
+    "email": "e@e",
+    "password_hash": "3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea"
+  },
+  {
+    "full_name": "l",
+    "email": "l@l.com",
+    "password_hash": "acac86c0e609ca906f632b0e2dacccb2b77d22b0621f20ebece1a4835b93f6f0"
+  },
+  {
+    "full_name": "z",
+    "email": "z@z",
+    "password_hash": "594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06"
+  },
+  {
+    "email": "n@n",
+    "password": "n",
+    "name": "n"
+  },
+  {
+    "full_name": "f",
+    "email": "f@f.com",
+    "password": "f"
+  },
+  {
+    "full_name": "k",
+    "email": "k@k.com",
+    "password": "k"
+  },
+  {
+    "name": "h",
+    "full_name": "h",
+    "email": "h@h.com",
+    "password": "h"
+  },
+  {
+    "name": "j",
+    "full_name": "j",
+    "email": "j@j",
+    "password": "j"
+  },
+  {
+    "name": "s",
+    "full_name": "s",
+    "email": "s@s.com",
+    "password": "s"
+  },
+  {
+    "name": "emma",
+    "full_name": "emma",
+    "email": "emma@emma.com",
+    "password": "emma"
+  }
+]

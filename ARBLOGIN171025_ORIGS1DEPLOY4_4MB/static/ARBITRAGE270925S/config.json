@@ -1,0 +1,18 @@
+{
+  "title": "Sports Arbitrage Bot \u2014 Dashboard",
+  "odds_api_key": "720b10a293359f1ec5fd7bf7682d524a",
+  "auto_copy": false,
+  "ding_enabled": true,
+  "ding_volume": 100,
+  "ding_edge_min": 4.200000000000003,
+  "ding_profit_min": 9.0,
+  "sanity_check_enabled": false,
+  "audio_enabled": true,
+  "audio_mute_all": false,
+  "audio_edge_tone": 0,
+  "audio_profit_tone": 7,
+  "audio_both_tone": 6,
+  "audio_edge_vol": 16,
+  "audio_profit_vol": 20,
+  "audio_both_vol": 20
+}

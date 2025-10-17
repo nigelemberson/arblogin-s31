@@ -1,0 +1,24 @@
+S31 Deployment Package — Big Cheese (ARBLOGIN171025C)
+
+Controlled edits only, based on your provided ZIP.
+Changes:
+- Added Procfile -> web: gunicorn ARBLOGIN171025_ORIGS1DEPLOY4_4MB.app:app
+- Created requirements.txt with Flask 3.0.0 and gunicorn 22.0.0
+- Added runtime.txt -> python-3.11.9
+- Note: app.run uses host=None port=None — harmless in production since gunicorn is used via Procfile.
+
+Key files:
+- Procfile
+- requirements.txt
+- runtime.txt
+- (Your original source preserved)
+
+Import smoke-test: FAIL
+
+Recommended Scalingo steps (PHST local):
+1) scalingo --app arbitrage-a1 env-set DATA_DIR=/tmp
+2) git init && git add . && git commit -m "S31 deploy"
+3) git remote add scalingo ssh://git@ssh.osc-fr1.scalingo.com:2222/arbitrage-a1.git  (if not present)
+4) git push scalingo master
+5) scalingo --app arbitrage-a1 restart
+6) scalingo --app arbitrage-a1 logs -n 200 --filter web

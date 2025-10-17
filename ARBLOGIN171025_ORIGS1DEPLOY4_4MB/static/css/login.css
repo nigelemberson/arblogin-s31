@@ -1,0 +1,33 @@
+
+:root{--bg:#000;--panel:#0f0f0f;--red:#ff3b3b;--green:#1f7d32;--text:#eaeaea;--border:rgba(255,255,255,.14)}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font:16px/1.45 Arial,Helvetica,sans-serif}
+.wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:40px 16px;position:relative;z-index:2}
+.brand{margin-top:7vh;text-align:center}
+.title{margin:0 0 16px 0;font-size:68px;letter-spacing:.4px;color:var(--red);animation:pulse 3.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+.panel{margin-top:18px;width:min(760px,92vw);background:var(--panel);border:1px solid var(--border);border-radius:18px;box-shadow:0 8px 28px rgba(0,0,0,.45);padding:32px 28px;position:relative;z-index:2}
+.form{display:grid;gap:18px}
+.field{position:relative}
+.field label{display:block;font-weight:700;margin-bottom:6px}
+.field input{width:100%;padding:16px 56px 16px 18px;border-radius:14px;border:1px solid var(--border);background:#0b0b0b;color:#fff;outline:none}
+.field input::placeholder{color:#a0a0a0}
+.field input:focus{border-color:#ffffff;outline:2px solid #ffffff44}
+.input-actions{position:absolute;right:10px;top:34px;display:flex;gap:8px}
+.icon-btn{appearance:none;border:1px solid rgba(255,255,255,.18);background:#141414;border-radius:10px;padding:6px 8px;cursor:pointer;font-weight:800;color:#fff}
+.icon-btn.red{background:#b02222;border-color:#b02222}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.btn{appearance:none;border:none;cursor:pointer;text-decoration:none;display:inline-block;padding:14px 20px;border-radius:16px;font-weight:800;color:#fff}
+.btn-green{background:var(--green)} .btn-red{background:var(--red)}
+.eye-wrap{width:34px;height:26px;border:1px solid rgba(255,255,255,.18);background:#141414;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.eye{width:24px;height:16px;display:block}
+.eye svg{width:24px;height:16px;display:block}
+.eye .sclera{fill:#fff}
+.eye .outline{stroke:#e5e5e5;stroke-width:1.2;fill:none;opacity:.95}
+.eye .pupil{fill:#000}
+.eye .shine{fill:#fff;opacity:.9}
+.eye .lid{fill:#0f0f0f;transform-origin:50% 50%;transition:transform .28s ease-in-out}
+.eye .lashes line{stroke:#dcdcdc;stroke-width:1;stroke-linecap:round;opacity:.9}
+.eye:not(.open) .lid{transform:translateY(0)}
+.eye.open .lid{transform:translateY(-14px)}
+.eye-wrap:hover .outline{filter:drop-shadow(0 0 1px rgba(255,255,255,.9))}

@@ -1,0 +1,160 @@
+:root {
+  --panel-bg: rgba(0,0,0,.55);
+  --text: #fff; --muted: #cfd3d8; --accent: #ffd54a;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text)}
+.bg{}
+.wrap{min-height:100%;display:grid;place-items:center;padding:32px}
+.panel{width:min(960px,92vw);background:var(--panel-bg);border-radius:18px;padding:28px 28px 32px;
+  box-shadow:0 10px 40px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.06)}
+.h1{font-size:40px;font-weight:800;letter-spacing:.3px;margin:0 0 6px;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.sub{color:var(--muted);margin:0 0 16px}
+.row{margin:14px 0}
+.btns a{display:inline-block;margin:10px 12px 0 0;padding:12px 18px;border:1px solid rgba(255,255,255,.35);
+  border-radius:12px;color:var(--text);text-decoration:none;transition:transform .06s ease,background .2s ease,border-color .2s ease}
+.btns a:hover{background:rgba(255,255,255,.12);transform:translateY(-1px);border-color:rgba(255,255,255,.6)}
+.big-cheese{font-weight:900;font-size:18px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
+  animation:pulse 2.2s infinite ease-in-out}
+@keyframes pulse{0%,100%{opacity:.65;filter:drop-shadow(0 0 0 rgba(255,213,74,.0))}50%{opacity:1;filter:drop-shadow(0 0 6px rgba(255,213,74,.35))}}
+.kv{display:flex;gap:18px;flex-wrap:wrap}
+.kv div{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 14px;min-width:220px}
+.kv div b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#ddd;margin-bottom:6px}
+#countdown{font-variant-numeric:tabular-nums}
+
+/* S22E overlay fix: keep content above animated star background */
+.wrap { position: relative; z-index: 10000; }
+.panel { position: relative; z-index: 10001; }
+.bg, .stars, .starfield, canvas.starfield { pointer-events: none; }
+
+.content-layer { position: relative; z-index: 10000; }
+
+/* S22F — align styles with Login/Create Account */
+:root{
+  --card-bg: #1f1f1f;
+  --card-border: rgba(255,255,255,0.06);
+  --card-shadow: 0 10px 28px rgba(0,0,0,.55);
+  --text: #e9eef3;
+  --muted: #b7bec6;
+  --accent: #ff4d4d; /* Big Cheese title color on login */
+  --btn-green: #16a34a;
+  --btn-green-hover: #22c55e;
+  --btn-red: #dc2626;
+  --btn-red-hover: #ef4444;
+  --btn-gray: #374151;
+  --btn-gray-hover: #4b5563;
+}
+body{color:var(--text)}
+.panel{
+  width:min(820px, 92vw);
+  background: var(--card-bg);
+  border-radius: 22px;
+  padding: 26px 28px 30px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+}
+.h1{color:#fff; text-shadow:none; font-size:36px; margin-top:4px}
+.big-cheese{ color: var(--accent); letter-spacing:.04em; font-weight:800; }
+.sub{ color: var(--muted) }
+
+.kv div{ background:#232323; border:1px solid rgba(255,255,255,.06) }
+
+.btns .btn{ display:inline-block; margin: 10px 10px 0 0; padding:12px 18px; border-radius:12px; text-decoration:none; color:#fff; }
+.btns .btn-primary{ background: var(--btn-green); }
+.btns .btn-primary:hover{ background: var(--btn-green-hover); }
+.btns .btn-danger{ background: var(--btn-red); }
+.btns .btn-danger:hover{ background: var(--btn-red-hover); }
+.btns .btn-secondary{ background: var(--btn-gray); }
+.btns .btn-secondary:hover{ background: var(--btn-gray-hover); }
+
+/* preserve z-index overlay from S22E */
+.wrap{ position: relative; z-index: 10000; }
+.panel{ position: relative; z-index: 10001; }
+.content-layer{ position: relative; z-index: 10000; }
+
+
+/* S22H — plan grid + payment methods (demo) */
+.section-title{ margin:18px 0 8px; font-size:16px; color:#e9eef3; font-weight:700; letter-spacing:.02em }
+.plans{ display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin-top:8px }
+.plan{ background:#232323; border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:14px 14px 16px }
+.plan h3{ margin:0 0 6px; font-size:18px; color:#fff }
+.price{ font-size:22px; font-weight:700; margin:4px 0 10px }
+ul.features{ margin:0; padding-left:18px; color:var(--muted) }
+.select{ margin-top:10px }
+.select .btn-select{ background:#374151; color:#fff; padding:10px 14px; border-radius:10px; text-decoration:none; display:inline-block }
+.select .btn-select.active, .select .btn-select:hover{ background:#4b5563 }
+
+.pm{ margin-top:16px; padding:14px; background:#232323; border:1px solid rgba(255,255,255,.08); border-radius:14px }
+.pm h4{ margin:0 0 8px; font-size:16px; color:#fff }
+.pm .row{ display:flex; gap:8px; flex-wrap:wrap }
+.pm label{ display:flex; align-items:center; gap:8px; padding:8px 12px; background:#2a2a2a; border:1px solid rgba(255,255,255,.06); border-radius:10px; cursor:pointer }
+.pm input{ accent-color:#16a34a }
+.note{ margin-top:10px; font-size:12px; color:#b7bec6 }
+.checkout{ margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; align-items:center }
+.badge-demo{ display:inline-block; margin-left:8px; padding:2px 6px; border-radius:999px; background:#4b5563; color:#fff; font-size:12px }
+.sel-summary{ color:#b7bec6; font-size:14px }
+
+
+/* S22I — color logic for plan buttons and orange GUI button */
+:root{
+  --btn-red: #dc2626;
+  --btn-red-hover: #ef4444;
+  --btn-green: #16a34a;
+  --btn-green-hover: #22c55e;
+  --btn-orange: #f59e0b; /* adjust to your exact app shade if needed */
+  --btn-orange-hover: #fbbf24;
+}
+.select .btn-select{
+  background: var(--btn-red);
+  color:#fff; padding:10px 14px; border-radius:10px; text-decoration:none; display:inline-block;
+}
+.select .btn-select:hover{ background: var(--btn-red-hover); }
+.select .btn-select.active{ background: var(--btn-green); }
+.select .btn-select.active:hover{ background: var(--btn-green-hover); }
+
+/* Orange "Go to GUI" button */
+.btns .btn-gui{ background: var(--btn-orange); color:#111; font-weight:700; }
+.btns .btn-gui:hover{ background: var(--btn-orange-hover); color:#111; }
+
+/* Pay Now demo button */
+.paynow{ margin-left: 0; }
+.btn-pay{ background: #2563eb; color:#fff; padding:12px 18px; border-radius:12px; text-decoration:none; display:inline-block }
+.btn-pay[disabled]{ opacity:.5; pointer-events:none }
+.btn-pay:hover{ background:#3b82f6 }
+
+
+/* S22J — typography and layout for Big Cheese + Subscription */
+.header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.big-cheese {
+  font-size: 44px;  /* slightly larger than Subscription & Renewal */
+  font-weight: 900;
+  letter-spacing: .03em;
+  margin: 0;
+  color: #ff4d4d;
+}
+.h1 {
+  font-size: 38px;
+  margin: 0;
+  color: #fff;
+}
+
+/* Go to GUI button orange theme (app standard shade) */
+:root {
+  --btn-orange: #ff8a00;
+  --btn-orange-hover: #ffa733;
+}
+.btns .btn-gui {
+  background: var(--btn-orange);
+  color: #111;
+  font-weight: 700;
+}
+.btns .btn-gui:hover {
+  background: var(--btn-orange-hover);
+  color: #111;
+}

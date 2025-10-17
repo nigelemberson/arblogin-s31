@@ -1,0 +1,159 @@
+# Delivery Quality Gate — ARBITRAGE120925C
+
+_Generated 2025-09-12 10:06:18 PHST_
+
+## Unpack Status
+- Unpacked ARBITRAGE120925C.zip -> /mnt/data/ARBITRAGE120925C
+- Unpacked ARBITRAGE_SNAPSHOT.zip -> /mnt/data/ARBITRAGE_SNAPSHOT
+
+## Project Structure (top level)
+- ARBITRAGE120925C/
+
+## Syntax Parse Summary
+- Total .py files: 7
+- OK: 7
+- Errors: 0
+
+## Likely Entry Points & Guards
+- ARBITRAGE120925C/dashboard.py — has `if __name__ == "__main__"` guard: YES
+- ARBITRAGE120925C/start_dashboard.py — has `if __name__ == "__main__"` guard: NO
+
+## Discovered Handover/TODO Docs
+- /mnt/data/ARBITRAGE_SNAPSHOT/HANDOVER.md
+- /mnt/data/ARBITRAGE_SNAPSHOT/TODO_CHECKLIST.md
+- /mnt/data/ARBITRAGE_SNAPSHOT/README_PACKAGING.md
+- /mnt/data/ARBITRAGE120925C/ARBITRAGE120925C/HANDOVER_110925E.md
+- /mnt/data/ARBITRAGE120925C/ARBITRAGE120925C/Handover_ARBITRAGE120925A.md
+
+## Merged TODO Snapshot (raw bullets)
+- `HANDOVER.md` (this document)
+- `TODO_CHECKLIST.md` (concise, actionable list)
+- `README_PACKAGING.md` (exact steps to produce a flat, drop‑in ZIP of the complete app once the current project folder is provided)
+- (Optional) `start_dashboard.py` template (runtime patcher — only if you want to enforce UI states without touching `dashboard.py`).
+- Main UI runs via `dashboard.py` (or `start_dashboard.py` launcher).
+- Requested UI behavior:
+- **Fetch Auto API** toggle: **red Off** ↔ **green On**, **seconds spinbox disables when On**.
+- **Auto Refresh** toggle: **orange Off** ↔ **green On**.
+- **Logout** & **Audit Log** dialogs: **orange buttons with black text** (match Key dialog).
+- **Live 1‑min** button: **removed/hidden**.
+- **Numeric text sizing** in spinboxes aligned visually with “Arsenal” text (final pass done).
+- Helper function `_apply_plus_minus_icons(self)` present to normalize spinbox arrows/padding.
+- Verify the green/red/orange styles **actually render** on your Windows theme/Qt style.
+- Confirm **button widths** (Calculate / Clear / Use Selection / Auto Copy) remain equal after recent changes.
+- Confirm **overflow** fix for “Stake A” and “Profit if B wins” labels at **full screen** and **initial small** load.
+- Review **Fetch Auto API** timer accuracy vs. the “Fetch every (secs)” spinbox values.
+- Confirm “Auto Copy” will become an orange **button** (currently noted for later).
+- Ensure **flat packaging** (no nested folders).
+- A **flat ZIP** containing the **complete app** (no nesting), with:
+- `dashboard.py` (permanently patched)
+- `start_dashboard.py` (optional, for runtime patching)
+- Any other modules/assets you include
+- A **smoke‑test script** to verify launch without side‑effects.
+- A **one‑page QA report** confirming the checklist results on my side.
+- Validate `dashboard.py` via AST parse.
+- (If provided) Add or confirm `_apply_plus_minus_icons`.
+- Bake UI changes permanently into `dashboard.py` (no runtime patch needed).
+- Build **flat ZIP** with **only** the files you want shipped.
+- Provide QA/launch check.
+- [ ] Fetch Auto API toggles **red Off** ↔ **green On**, spinbox disables/enables accordingly.
+- [ ] Auto Refresh toggles **orange Off** ↔ **green On**.
+- [ ] Logout & Audit Log dialogs use **orange buttons, black text**.
+- [ ] Live 1‑min **not present**.
+- [ ] Text overflow: “Stake A” & “Profit if B wins” labels OK in **full screen** and **initial small** window.
+- [ ] Button widths: Calculate / Clear / Use Selection / Auto Copy are **equal width**.
+- [ ] Calculator Output numerals `$` and `%` match Calculator numerals (size/weight).
+- [ ] Auto fetch interval uses **integer seconds**; respects the spinbox value.
+- [ ] Auto Copy to be converted to an **orange button** (later item).
+- [ ] **Flat** structure (no nested folders).
+- [ ] `dashboard.py` has **MainWindow + main() + guard** (standard entrypoint).
+- [ ] Smoke test passes on Windows (PowerShell).
+- `_apply_plus_minus_icons(self)` present and harmless if no spinboxes exist at call time.
+- If any style doesn’t appear, Windows theme/Qt style may override; we can force it with a one‑liner app style if needed.
+- **NameError: MainWindow** ⇒ I’ll insert a small wrapper class and a clean `main()`.
+- **AttributeError: _apply_plus_minus_icons** ⇒ already included safely; I’ll re‑add if missing.
+- **Buttons don’t turn green/red** ⇒ I’ll confirm styles are applied (and not overridden by OS theme).
+- **Dialog buttons not orange/black** ⇒ I’ll restyle with instance-based `QMessageBox` and apply stylesheet on it.
+- **Status:** Close, but **not release‑ready**. Remaining issues are mainly UI consistency and a brittle plus/minus implementation that behaves differently across machines/themes.
+- **Recommended approach:** Apply changes **one at a time**. This document includes a prioritized to‑do list, acceptance checks, and paste‑ready code snippets.
+- Core window, tables, and controls render.
+- League label + dropdown present; “Fetch every” spinbox present; title font bump applied.
+- A beginner‑friendly printable guide is available: **[Arbitrage_BOT_User_Guide_v3.rtf](sandbox:/mnt/data/Arbitrage_BOT_User_Guide_v3.rtf)**
+- League dropdown text baseline can clip; arrow may be missing.
+- League dropdown width should **match** “Fetch every” width.
+- **No outer green frame** around the League + dropdown.
+- Title **“ARBITRAGE BOT”** must not truncate at common window sizes (e.g., 1366×768 and full‑screen).
+- Plus/minus **must always show** on native orange buttons across PCs/themes.
+- Consistent height (e.g., **34 px**), proper right padding so values aren’t clipped.
+- Correct decimals (e.g., **2 dp** for “Fetch every”, “Fixed Fee”).
+- `Dashboard._apply_plus_minus_icons()` is **called** in some builds but **not defined**, causing crashes.
+- Avoid temporary launchers/monkey‑patches; keep a **single `dashboard.py`** that runs cleanly.
+- All six spinboxes show **+** (up) and **−** (down) on at least **two** different PCs.
+- No missing arrows. No crash from `_apply_plus_minus_icons` call.
+- Keep **only** the label (“League”) and the dropdown inline—**no outer green frame**.
+- If space is still tight, reduce **spacing** first; avoid shrinking the title.
+- At **1366×768** and full‑screen: no horizontal scroll; full “ARBITRAGE BOT” visible.
+- League dropdown baseline OK; right‑side arrow visible; width matches “Fetch every”.
+- Values like `120.00` or `120.00%` are **not clipped**.
+- Mouse, keyboard, and wheel behavior unchanged.
+- Prefer a **single** `dashboard.py` with:
+- `PlusMinusProxyStyle` applied at app startup,
+- header fixes in `_build_ui`,
+- `_apply_plus_minus_icons` stubbed (no‑op).
+- **QSS overrides:** Some themes or code may override stylesheet rules. The **style proxy** bypasses this by replacing standard arrow pixmaps at the style level.
+- **Hi‑DPI scaling:** 16 px is usually safe at 125–150%. If icons feel too small, try **17–18 px** and set button width to **22–24 px**.
+- **Missing methods:** Keeping the `_apply_plus_minus_icons` **no‑op** ensures legacy calls do not crash.
+- Printable guide (v3): **[Arbitrage_BOT_User_Guide_v3.rtf](sandbox:/mnt/data/Arbitrage_BOT_User_Guide_v3.rtf)**
+- This handover: **Handover & To‑Do (Markdown)**
+- **Two outcomes (no fees)**
+- **Fees**
+- **Python:** 3.13
+- **PyQt:** PyQt6 (Qt 6)
+- Consolidated guidance into a single handover document.
+- Added **style proxy** solution for +/− to be theme‑proof.
+- Clarified header width matching and clipping fixes.
+- Provided acceptance checks and test checklist.
+- **Start script:** `start_dashboard.py`
+- **Main UI:** `dashboard.py` (flat package; **no nested folders**)
+- **League selector:** works as before
+- **Quota pill:** `Quota: {used}/{last} • {remaining} left`
+- `used` = `x-requests-used`
+- `last` = `x-requests-last` (per-call cost). Falls back to `?` if header absent.
+- `remaining` = `x-requests-remaining`
+- **No hover tooltip.** **No click action.**
+- **Green API band (Table 1 strip):** shows **only** results from **Fetch Now (API)**; not changed by UI-only refresh.
+- **Buttons (split):**
+- **Fetch Now (API):** makes the network request; updates Table 1, the **green API band**, and the **quota pill**.
+- **Refresh Odds / Arbs:** **UI-only**; repaints Table 1 & 2, updates **Table 2 label** to `Last refresh (UI): YYYY-MM-DD HH:MM:SS`, and posts bottom status `Refresh complete (UI only)`. **No network call.**
+- Tooltip removed; click disabled.
+- Text shows per-call cost instead of unknown limit.
+- **Fetch Now (API)** = network + green band + pill.
+- **Refresh** = UI-only + timestamp on Table 2 label + bottom status.
+- Table 1 updates with new rows.
+- Green band: `Last reload (API): ok | x-requests-used:… | x-requests-remaining:… | x-requests-last:…`
+- Pill: `used/last • remaining` (numbers advance).
+- No change in green band or pill.
+- Bottom-left status: `Refresh complete (UI only)`.
+- Table 2 label: `Last refresh (UI): YYYY-MM-DD HH:MM:SS`.
+- **A. Offline arbs recompute on Refresh (no API):**
+- Rebuild Table 2 from cached Table‑1 rows to show current arbitrage opportunities without a network call.
+- *Acceptance:* pressing **Refresh** updates Table 2 values deterministically with no quota usage.
+- **B. Header order stability (minor):**
+- Ensure green band always prints `used, remaining, last` in that order (normalize keys on parse).
+- **C. Optional: hide green API band unless error:**
+- When last call is `ok`, keep the band collapsed/hidden; display only on error or when toggled.
+- **D. Configurable plan limit (optional):**
+- Support `plan_limit` in `config.json` to show `used/plan_limit` if `x-requests-last` is missing.
+- **E. Export & Audit Log sanity pass:** ensure file paths remain flat; confirm “Export” and “Audit Log” still work with Version F.
+- **F. Error/edge UX:** confirm cooldowns and disabled states on fast repeat clicks; friendly dialogs on failures.
+- **G. Auto modes:** verify **Auto Fetch** / **Auto Refresh** / **Live 1‑min** timings still align with quota strategy.
+- **H. Theme consistency:** keep message dialogs readable without altering the app’s capsule/pill visuals.
+- Different APIs sometimes vary header **order**; we will explicitly order them at render time.
+- Odds API header `x-requests-last` may be absent → pill shows `?` as designed.
+- Keep the package **flat** (no nested folders) when producing zips.
+- You’ll send **Version F** zip as the new baseline.
+- I will:
+- Deliverables will be **single drop‑ins** (`dashboard.py`) or a **flat full zip** when required—always compiled/validated first.
+- Quota pill: no tooltip, no click; text switched to `used/last • remaining`.
+- Button split: Refresh = UI‑only; Fetch Now = API.
+- Table 2 label gains timestamp on Refresh.
+- Green API band protected from Refresh.

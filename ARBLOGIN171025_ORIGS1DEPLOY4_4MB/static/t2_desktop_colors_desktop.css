@@ -1,0 +1,8 @@
+:root{
+  --t2-good:#083d18; --t2-good-border:#1faa65;
+  --t2-warn:#3a2304; --t2-warn-border:#f59e0b;
+}
+.t2-table tr.t2-good{ background:var(--t2-good); border-left:3px solid var(--t2-good-border) }
+.t2-table tr.t2-warn{ background:var(--t2-warn); border-left:3px solid var(--t2-warn-border) }
+.t2-edge-up{ color:#34d399; font-weight:700 }
+.t2-edge-down{ color:#f97316; font-weight:700 }

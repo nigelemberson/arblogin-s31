@@ -1,0 +1,52 @@
+
+ARBITRAGE210925 — Handover (A24d)
+=================================
+
+Summary
+-------
+This drop fixes the Bet Card dialog opening too small. The size regression
+was caused by a stray line `dlg.setFixedSize(224, 133)` inside `_open_bet_card(...)`,
+which came from the Exit dialog refactor. That line has been removed.
+
+What’s in this build
+--------------------
+- Exit dialog: 224 x 133 px, title green taken from Table 1 accent, body text matches
+  the Table 1 row font; local stylesheet only (no global QDialog rules).
+- Bet Card: opens ~140 x 100 mm on the active screen using DPI, with clamped DPI and a
+  minimum pixel fallback so it never opens tiny.
+
+Key files
+---------
+- dashboard.py
+  - `_open_exit_dialog(...)` — builds and shows ExitDialog; only exits on Accept.
+  - `_open_bet_card(...)` — Bet Card UI and size logic (see the block labeled
+    “Enforce Bet Card size …”).
+- exit_dialog_custom.py
+  - `ExitDialog(QDialog)` — isolated, themed confirmation dialog.
+
+Known pitfalls & how to avoid them
+----------------------------------
+1) Global dialog styles
+   Do NOT style `QDialog` in the app-wide stylesheet; style each dialog instance.
+2) Spinbox arrows
+   Disappear if QSS hides `QAbstractSpinBox::up-button`/`::down-button` or a widget
+   overlaps the right edge; fix QSS or layout margins.
+3) DPI/scaling
+   On multi-monitor Windows setups, always ask the current window handle for its screen
+   to compute mm->px.
+
+Safe knobs
+----------
+- To change Bet Card size: edit `_open_bet_card(...)`, set target mm values or override
+  with fixed pixels: `dlg.setFixedSize(640, 460)`.
+- To change Exit font size only: in ExitDialog, adjust the body label’s `QFont` point size.
+
+Regression test checklist
+-------------------------
+- Exit opens 224x133, matches theme, Yes quits, No cancels.
+- Bet Card always opens large enough to read on all monitors/scales.
+- Spinbox +/- arrows visible on all six inputs.
+- Key dialog looks unchanged.
+
+
+Update (A24e): Bet Card target changed to ~110 x 80 mm with fallback 420x300 px.

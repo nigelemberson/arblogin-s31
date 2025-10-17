@@ -1,0 +1,6 @@
+# Project dependencies for ARBITRAGE bot
+
+PyQt6
+requests
+pandas
+numpy

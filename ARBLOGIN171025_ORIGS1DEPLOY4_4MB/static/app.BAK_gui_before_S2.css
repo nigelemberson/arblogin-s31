@@ -1,0 +1,15 @@
+/* === S13 additions (Table 2 colours + 1s pulse) === */
+:root{
+  --t2-green:#2EE66B;
+  --t2-yellow:#F5C542;
+  --t2-red:#DE3E4B;
+  --t2-border:#1a7a3b;
+}
+@keyframes t2-pulse-1s{0%{filter:none}50%{filter:brightness(0.85)}100%{filter:none}}
+.t2-row{transition:background-color .2s ease}
+.t2-pos{background-color:var(--t2-green)!important}
+.t2-warn{background-color:var(--t2-yellow)!important}
+.t2-neg{background-color:var(--t2-red)!important}
+.t2-pulse{animation:t2-pulse-1s 1s linear infinite!important}
+.t2-selected{outline:2px solid var(--t2-border);outline-offset:-2px}
+/* === end S13 additions === */

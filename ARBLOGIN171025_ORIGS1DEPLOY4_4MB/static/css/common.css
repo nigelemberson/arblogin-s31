@@ -1,0 +1,35 @@
+/* A3_STEP19 common styles */
+:root { --bc-green:#23C26B; --red:#ff4747; --text:#eaeaea; --panel: rgba(16,16,16,.92); }
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3rem 1rem}
+.card{width:min(940px,94vw);background:var(--panel);border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;padding:2.2rem 2.4rem;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+h1.title{margin:0 0 .6rem 0;font-size:clamp(32px,6.5vw,56px);color:var(--red);
+         animation:pulseTitle 2.8s ease-in-out infinite;text-align:center}
+@keyframes pulseTitle{0%,100%{filter:drop-shadow(0 0 0 rgba(255,71,71,0))}50%{filter:drop-shadow(0 0 12px rgba(255,71,71,.35))}}
+p.sub{text-align:center;margin:.25rem 0 1.4rem 0;color:#cfcfcf;font-size:clamp(14px,2.4vw,18px)}
+.form{display:grid;gap:14px;justify-items:center}
+.form input{width:85%;max-width:620px;padding:.9rem 1rem;border-radius:12px;
+            border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.35);color:#fff}
+.btn{background:var(--bc-green);color:#08110C;border:none;border-radius:999px;padding:1rem 1.8rem;
+     font-weight:800;letter-spacing:.3px;cursor:pointer;font-size:clamp(16px,2.6vw,20px)}
+.btn:hover{filter:saturate(110%) brightness(1.02);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.actions{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.links{display:flex;gap:1rem;justify-content:center;align-items:center;margin-top:1rem}
+.links a{color:#e6e6e6;text-decoration:none;border-bottom:1px dashed rgba(230,230,230,.5);padding-bottom:2px}
+
+/* --- starry background safety net: always behind content --- */
+.page, .card { position: relative; z-index: 1; }
+
+/* common class names used by login star partial; push them back */
+.star-field, .star-field .layer,
+.stars, .stars *,
+.bg, .bg *,
+.space, .space * {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
