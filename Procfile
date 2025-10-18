@@ -1,2 +1,3 @@
-web: gunicorn app:app
+web: gunicorn ARBLOGIN171025_ORIGS1DEPLOY4_4MB.app:app
+
 
